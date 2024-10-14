@@ -1,4 +1,4 @@
-import { roboto } from '@/utils/fonts'
+import { inter } from '@/utils/fonts'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -13,8 +13,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={roboto.className}>
-      <body>{children}</body>
+    <html lang='en' className={inter.className}>
+      <body>
+        <main className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
