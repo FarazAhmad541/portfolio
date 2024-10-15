@@ -1,5 +1,7 @@
+import { customeComponents } from '@/mdx-components'
 import { getMdxFrontmatter } from '@/utils/getMdxFrontmatter'
 import fs from 'fs'
+import matter from 'gray-matter'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import path from 'path'
@@ -31,12 +33,13 @@ export default async function BlogPost({
   const filePath = path.join(process.cwd(), 'content', `${post.slug}.mdx`)
 
   // Read the MDX file content using fs (file system)
-  const source = fs.readFileSync(filePath, 'utf8')
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+
+  const { content } = matter(fileContents)
 
   return (
-    <article className='prose dark:prose-invert mx-auto'>
-      <h1>{post.title}</h1>
-      <MDXRemote source={source} />
-    </article>
+    <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'>
+      <MDXRemote source={content} components={customeComponents} />
+    </div>
   )
 }

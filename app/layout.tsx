@@ -14,11 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={inter.className}>
-      <body>
-        <main className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'>
-          {children}
-        </main>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

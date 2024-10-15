@@ -16,6 +16,7 @@ export function getMdxFrontmatter(): Frontmatter[] {
 
       return {
         ...data,
+        filename,
       } as Frontmatter
     })
 

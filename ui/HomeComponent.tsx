@@ -1,5 +1,6 @@
 'use client'
 
+import { Frontmatter } from '@/lib/definitions'
 import { containerVariants, itemVariants } from '@/utils/framerMotionVariants'
 import { Separator } from '@radix-ui/react-menubar'
 import { motion, useInView } from 'framer-motion'
@@ -8,7 +9,6 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import profile from '../assets/Faraz.png'
 import BlogsList from './BlogsList'
-import { Frontmatter } from '@/lib/definitions'
 
 type HomeProps = {
   blogPosts: Frontmatter[]
@@ -24,7 +24,7 @@ export default function Home({ blogPosts }: HomeProps) {
       initial='hidden'
       animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}
-      className='space-y-8 col-span-6 md:col-span-12 lg:col-span-12'
+      className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'
     >
       <motion.div
         variants={itemVariants}
@@ -38,7 +38,7 @@ export default function Home({ blogPosts }: HomeProps) {
             height={50}
             className='rounded-full'
           />
-          <div className='mt-'>
+          <div className=''>
             <h1 className='text-lg leading-none font-bold text-light'>
               Faraz Ahmad.
             </h1>
@@ -74,26 +74,12 @@ export default function Home({ blogPosts }: HomeProps) {
         variants={itemVariants}
         className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center'
       >
-        <a
-          href='https://github.com/FarazAhmad541'
-          target='_blank'
-          className='flex items-center gap-2 text-secondaryLight hover:text-light '
-        >
-          Github
-        </a>
-        <a
+        <SocialLink href='https://github.com/FarazAhmad541' label='Github' />
+        <SocialLink
           href='https://www.linkedin.com/in/faraz-ahmad-fsd'
-          target='_blank'
-          className='flex items-center gap-2 text-secondaryLight hover:text-light'
-        >
-          LinkedIn
-        </a>
-        <a
-          href='mailto: faraz.ahmad.fsd@gmail.com'
-          className='flex items-center gap-2 text-secondaryLight hover:text-light '
-        >
-          Email
-        </a>
+          label='LinkedIn'
+        />
+        <SocialLink href='mailto: faraz.ahmad.fsd@gmail.com' label='Email' />
       </motion.div>
 
       <motion.div
@@ -109,10 +95,24 @@ export default function Home({ blogPosts }: HomeProps) {
         </div>
       </motion.div>
 
-      <motion.div variants={itemVariants}>
-        <Separator className='col-span-6 md:col-span-12 bg-secondaryLight h-px' />
+      <motion.div
+        variants={itemVariants}
+        className='col-span-6 md:col-span-12 lg:col-span-12'
+      >
+        <Separator className=' bg-secondaryLight h-px' />
       </motion.div>
       <BlogsList blogPosts={blogPosts} />
     </motion.div>
+  )
+}
+function SocialLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target='_blank'
+      className='flex items-center gap-2 text-secondaryLight hover:text-light '
+    >
+      {label}
+    </a>
   )
 }
