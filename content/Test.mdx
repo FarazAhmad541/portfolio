@@ -34,7 +34,7 @@ npm install @tanstack/react-query
 
 2. Set up your React Query client:
 
-```javascript
+```tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
@@ -50,7 +50,7 @@ function App() {
 
 3. Create a Server Action:
 
-```javascript
+```tsx
 'use server'
 
 export async function addTodo(title) {
@@ -62,7 +62,7 @@ export async function addTodo(title) {
 
 4. Use React Query with the Server Action:
 
-```javascript
+```tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { addTodo } from './actions'
 

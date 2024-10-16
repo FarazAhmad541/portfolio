@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        codeBackground: 'var(--code-background)',
         secondaryLight: '#bfbfbf',
         dark: '#101012',
         light: '#f5f5f5',

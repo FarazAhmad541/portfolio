@@ -9,13 +9,18 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
 }
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: 'aurora-x',
+  
+}
 
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: [[remarkFrontmatter], [remarkMdxFrontmatter]],
-    rehypePlugins: [[rehypePrettyCode]],
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 })
 

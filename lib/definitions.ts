@@ -5,3 +5,8 @@ export interface Frontmatter {
   description: string
   filename: string
 }
+export type BlogProps = {
+  blog: {
+    content: string
+  }
+}
