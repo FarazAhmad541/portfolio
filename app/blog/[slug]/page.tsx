@@ -11,8 +11,7 @@ import path from 'path'
 import rehypePrettyCode from 'rehype-pretty-code'
 
 const options: import('rehype-pretty-code').Options = {
-  theme: 'aurora-x',
-  keepBackground: true,
+  theme: 'tokyo-night',
 }
 
 export async function generateStaticParams() {

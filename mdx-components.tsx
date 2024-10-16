@@ -12,7 +12,7 @@ function h1({ children }: PropsWithChildren<object>) {
 
 function h2({ children }: PropsWithChildren<object>) {
   return (
-    <h2 className='text-2xl font-bold col-span-6 md:col-span-12 lg:col-span-12'>
+    <h2 className='text-2xl font-bold col-span-6 md:col-span-12 lg:col-span-12 mt-8'>
       {children}
     </h2>
   )
@@ -66,7 +66,7 @@ function li({ children }: PropsWithChildren<object>) {
 }
 function ol({ children }: PropsWithChildren<object>) {
   return (
-    <ol className='text-base col-span-6 md:col-span-12 lg:col-span-12'>
+    <ol className='text-base col-span-6 md:col-span-12 lg:col-span-12 list-decimal pl-5'>
       {children}
     </ol>
   )
