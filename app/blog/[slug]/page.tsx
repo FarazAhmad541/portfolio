@@ -58,6 +58,7 @@ export default async function BlogPost({
 
   const mdxRemoteOptions: MDXRemoteOptions = {
     parseFrontmatter: false,
+
     mdxOptions: { rehypePlugins: [[rehypePrettyCode, options]] },
   }
 

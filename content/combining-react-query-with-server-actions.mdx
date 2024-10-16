@@ -26,13 +26,13 @@ While Server Actions are great for handling server-side operations, React Query 
 
 Let's walk through a basic setup:
 
-- First, install the necessary packages:
+#### First, install the necessary packages:
 
 ```bash
 npm install @tanstack/react-query
 ```
 
-- Set up your React Query client:
+#### Set up your React Query client:
 
 ```tsx showLineNumbers
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -48,7 +48,7 @@ function App() {
 }
 ```
 
-- Create a Server Action:
+#### Create a Server Action:
 
 ```tsx showLineNumbers 
 'use server'
@@ -60,7 +60,7 @@ export async function addTodo(title) {
 }
 ```
 
-- Use React Query with the Server Action:
+#### Use React Query with the Server Action:
 
 ```tsx showLineNumbers {6-11}
 import { useMutation, useQueryClient } from '@tanstack/react-query'

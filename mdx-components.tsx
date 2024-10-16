@@ -59,7 +59,7 @@ function p({ children }: PropsWithChildren<object>) {
 }
 function li({ children }: PropsWithChildren<object>) {
   return (
-    <li className='text-base col-span-6 md:col-span-12 lg:col-span-12'>
+    <li className='text-base col-span-6 md:col-span-12 lg:col-span-12 my-4'>
       {children}
     </li>
   )
