@@ -86,7 +86,7 @@ export default function Home({ blogPosts }: HomeProps) {
         variants={itemVariants}
         className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center justify-between'
       >
-        <p className='text-sm font-semibold text-secondaryLight'>
+        <p className='text-md font-semibold text-light'>
           The Stuff I Learned Along The Way
         </p>
         <div className='flex items-center gap-2 text-secondaryLight hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'>
