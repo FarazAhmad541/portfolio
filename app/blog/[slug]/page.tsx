@@ -1,4 +1,5 @@
 import { customeComponents } from '@/mdx-components'
+import Header from '@/ui/Header'
 import { getMdxFrontmatter } from '@/utils/getMdxFrontmatter'
 import { getPostBySlug } from '@/utils/getPostBySlug'
 import fs from 'fs'
@@ -66,7 +67,8 @@ export default async function BlogPost({
   }
 
   return (
-    <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'>
+    <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
+      <Header />
       <Link
         href='/'
         className='flex justify-start items-center w-fit pb-4 gap-5 text-secondaryLight hover:text-light cursor-pointer transition-transform col-span-full'

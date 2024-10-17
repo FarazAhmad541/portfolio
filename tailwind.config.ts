@@ -21,6 +21,7 @@ const config: Config = {
         secondaryLight: '#bfbfbf',
         dark: '#101012',
         light: '#f5f5f5',
+        
       },
       borderRadius: {
         lg: 'var(--radius)',

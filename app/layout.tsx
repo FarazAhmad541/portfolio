@@ -1,3 +1,4 @@
+import Footer from '@/ui/Footer'
 import { inter } from '@/utils/fonts'
 import type { Metadata } from 'next'
 import './globals.css'
@@ -14,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={inter.className}>
-      <body>{children}</body>
+      <body>
+        <div className='flex flex-col min-h-screen'>
+          {children}
+          <Footer />
+        </div>
+      </body>
     </html>
   )
 }
