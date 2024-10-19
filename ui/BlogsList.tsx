@@ -23,7 +23,7 @@ export default function BlogsList({ blogPosts }: BlogsListProps) {
           >
             <div className='flex justify-start items-start gap-5'>
               <div>
-                <h2>{post.title}</h2>
+                <h2 className='text-light'>{post.title}</h2>
                 <p>{post.date}</p>
               </div>
               <ArrowRight className='w-6 h-6 transition-transform duration-300 group-hover:transform group-hover:-rotate-45 ease-in-out' />
