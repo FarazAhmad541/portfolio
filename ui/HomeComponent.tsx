@@ -63,7 +63,7 @@ export default function Home({ blogPosts }: HomeProps) {
           className='col-span-6 md:col-span-12 lg:col-span-12'
         >
           <p className='text-light text-base leading-[1.6rem] font-base'>
-            A passionate web developer with a knack for crafting sleek,
+            A web developer with a knack for crafting sleek,
             responsive, and user-friendly experiences. Armed with React and
             Next.js, I turn complex problems into elegant solutions. Always
             eager to expand my skill set and bring fresh, innovative approaches
