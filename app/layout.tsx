@@ -1,26 +1,29 @@
-import Footer from "@/ui/Footer";
-import { inter } from "@/utils/fonts";
-import type { Metadata } from "next";
-import "./globals.css";
+import ReactQueryProvider from '@/lib/reactQueryProvider'
+import Footer from '@/ui/Footer'
+import { inter } from '@/utils/fonts'
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Faraz Ahmad",
-  description: "Made by Faraz Ahmad",
-};
+  title: 'Faraz Ahmad',
+  description: 'Made by Faraz Ahmad',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang='en' className={inter.className}>
       <body>
-        <div className="flex flex-col min-h-screen">
-          {children}
-          <Footer />
-        </div>
+        <ReactQueryProvider>
+          <div className='flex flex-col min-h-screen'>
+            {children}
+            <Footer />
+          </div>
+        </ReactQueryProvider>
       </body>
     </html>
-  );
+  )
 }
