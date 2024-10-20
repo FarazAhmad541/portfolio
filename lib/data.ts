@@ -1,4 +1,4 @@
-'server only'
+'use server'
 import { PrismaClient } from '@prisma/client'
 export const getPosts = async () => {
   const prisma = new PrismaClient()
@@ -31,6 +31,7 @@ export const getSlugs = async () => {
     return slugs
   } catch (e) {
     console.log(e)
+    return []
   } finally {
     prisma.$disconnect()
   }
