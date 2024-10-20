@@ -16,10 +16,8 @@ const options: import('rehype-pretty-code').Options = {
 }
 
 export async function generateStaticParams() {
-  const posts = await getSlugs()
-  return posts?.map((post) => ({
-    slug: post.slug,
-  }))
+  const slugs = await getSlugs()
+  return slugs ?? []
 }
 
 export async function generateMetadata({
