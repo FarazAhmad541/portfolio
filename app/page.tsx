@@ -1,11 +1,17 @@
-import HoemComponent from "@/ui/HomeComponent";
-import { getMdxFrontmatter } from "@/utils/getMdxFrontmatter";
+import { getPosts } from '@/lib/data'
+import HomeComponent from '@/ui/HomeComponent'
+
 export default async function Home() {
-  const blogPosts = getMdxFrontmatter();
+  const blogPosts = await getPosts()
+
+  if (!blogPosts) {
+    console.log('No posts found')
+    return
+  }
 
   return (
     <>
-      <HoemComponent blogPosts={blogPosts} />
+      <HomeComponent blogPosts={blogPosts} />
     </>
-  );
+  )
 }

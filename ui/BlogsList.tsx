@@ -1,17 +1,17 @@
-import { Frontmatter } from '@/lib/definitions'
+import { BlogsListProps } from '@/lib/definitions'
 import { itemVariants } from '@/utils/framerMotionVariants'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
-type BlogsListProps = {
-  blogPosts: Frontmatter[]
+type ParamsType = {
+  blogPosts: BlogsListProps[]
 }
 
-export default function BlogsList({ blogPosts }: BlogsListProps) {
+export default function BlogsList({ blogPosts }: ParamsType) {
   return (
     <>
-      {blogPosts?.map((post: Frontmatter, index: number) => (
+      {blogPosts.map((post: BlogsListProps, index: number) => (
         <motion.div
           key={index}
           variants={itemVariants}
@@ -24,11 +24,11 @@ export default function BlogsList({ blogPosts }: BlogsListProps) {
             <div className='flex justify-start items-start gap-5'>
               <div>
                 <h2 className='text-light'>{post.title}</h2>
-                <p>{post.date}</p>
+                <p>{post.createdAt.toISOString().slice(0, 10)}</p>
               </div>
               <ArrowRight className='w-6 h-6 transition-transform duration-300 group-hover:transform group-hover:-rotate-45 ease-in-out' />
             </div>
-            <p className='mt-3'>{post.description}</p>
+            <p className='mt-3'>{post.metaDescription}</p>
           </Link>
         </motion.div>
       ))}

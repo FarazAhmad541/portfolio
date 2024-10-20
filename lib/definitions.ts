@@ -21,3 +21,10 @@ export type BlogProps = {
     content: string
   }
 }
+
+export type BlogsListProps = {
+  title: string
+  metaDescription: string
+  createdAt: Date
+  slug: string
+}

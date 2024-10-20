@@ -16,7 +16,7 @@ datasource db {
 model Article {
   id              String   @id @unique @default(uuid())
   title           String
-  slug            String
+  slug            String   
   metaDescription String   @default("")
   body            String
   createdAt       DateTime @default(now())

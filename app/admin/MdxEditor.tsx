@@ -19,6 +19,8 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Textarea } from '@/components/ui/textarea'
+
+import { useAuth } from '@clerk/nextjs'
 import { useMutation } from '@tanstack/react-query'
 import { submitArticle } from './action'
 
@@ -31,6 +33,8 @@ export default function ArticleForm() {
   const [isPublished, setIsPublished] = useState(false)
   const [description, setDescription] = useState('')
   const [content, setContent] = useState('')
+  const { signOut } = useAuth()
+
   const { mutate: submit } = useMutation({
     mutationFn: submitArticle,
     onSuccess: () => console.log('success'),
@@ -47,7 +51,9 @@ export default function ArticleForm() {
       body: content,
     })
   }
-
+  const handleSignOut = () => {
+    signOut()
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -55,9 +61,17 @@ export default function ArticleForm() {
       transition={{ duration: 0.5 }}
       className='max-w-4xl mx-auto p-6 space-y-8'
     >
-      <h1 className='text-3xl font-bold text-center text-primary'>
-        Create New Article
-      </h1>
+      <div className='flex justify-between items-center px-7'>
+        <h1 className='text-3xl font-bold text-center text-primary'>
+          Create New Article
+        </h1>
+        <Button
+          className=' bg-blue-500 text-white hover:bg-blue-600'
+          onClick={handleSignOut}
+        >
+          Sign Out
+        </Button>
+      </div>
 
       <form
         onSubmit={handleSubmit}

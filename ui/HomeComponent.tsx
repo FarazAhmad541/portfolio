@@ -1,6 +1,6 @@
 'use client'
 
-import { Frontmatter } from '@/lib/definitions'
+import { BlogsListProps } from '@/lib/definitions'
 import { containerVariants, itemVariants } from '@/utils/framerMotionVariants'
 import { Separator } from '@radix-ui/react-menubar'
 import { motion, useInView } from 'framer-motion'
@@ -11,7 +11,7 @@ import profile from '../assets/Faraz.png'
 import BlogsList from './BlogsList'
 
 type HomeProps = {
-  blogPosts: Frontmatter[]
+  blogPosts: BlogsListProps[]
 }
 
 export default function Home({ blogPosts }: HomeProps) {
@@ -63,11 +63,10 @@ export default function Home({ blogPosts }: HomeProps) {
           className='col-span-6 md:col-span-12 lg:col-span-12'
         >
           <p className='text-light text-base leading-[1.6rem] font-base'>
-            A web developer with a knack for crafting sleek,
-            responsive, and user-friendly experiences. Armed with React and
-            Next.js, I turn complex problems into elegant solutions. Always
-            eager to expand my skill set and bring fresh, innovative approaches
-            to my work.
+            A web developer with a knack for crafting sleek, responsive, and
+            user-friendly experiences. Armed with React and Next.js, I turn
+            complex problems into elegant solutions. Always eager to expand my
+            skill set and bring fresh, innovative approaches to my work.
           </p>
         </motion.div>
 
