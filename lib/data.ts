@@ -1,7 +1,6 @@
 'use server'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
 export const getPosts = async () => {
-  const prisma = new PrismaClient()
   try {
     const posts = await prisma.article.findMany({
       where: { published: true },
@@ -15,13 +14,10 @@ export const getPosts = async () => {
     return posts
   } catch (e) {
     console.log(e)
-  } finally {
-    prisma.$disconnect()
   }
 }
 
 export const getSlugs = async () => {
-  const prisma = new PrismaClient()
   try {
     const slugs = await prisma.article.findMany({
       select: {
@@ -32,13 +28,10 @@ export const getSlugs = async () => {
   } catch (e) {
     console.log(e)
     return []
-  } finally {
-    prisma.$disconnect()
   }
 }
 
 export const getPostBySlug = async (slug: string) => {
-  const prisma = new PrismaClient()
   try {
     const post = prisma.article.findFirst({
       where: {
@@ -48,7 +41,5 @@ export const getPostBySlug = async (slug: string) => {
     return post
   } catch (e) {
     console.log(e)
-  } finally {
-    prisma.$disconnect()
   }
 }
