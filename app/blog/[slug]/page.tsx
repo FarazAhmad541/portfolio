@@ -8,7 +8,6 @@ import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-
 export async function generateStaticParams() {
   const slugs = await getSlugs()
   return slugs ?? []
@@ -46,17 +45,15 @@ export default async function BlogPost({
   const content = post.body
 
   return (
-    <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
-      <div className='max-h-fit'>
-        <Header />
-        <Link
-          href='/'
-          className='flex justify-start max-h-5 items-center w-fit pb-4 gap-5 text-secondaryLight hover:text-light cursor-pointer transition-transform col-span-full'
-        >
-          <MoveLeft />
-          <p>Back To Home</p>
-        </Link>
-      </div>
+    <div className='bg-dark flex flex-col gap-5 justify-start items-start p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
+      <Header />
+      <Link
+        href='/'
+        className='flex justify-start items-center w-fit pb-4 gap-5 text-secondaryLight hover:text-light cursor-pointer transition-transform col-span-full'
+      >
+        <MoveLeft />
+        <p>Back To Home</p>
+      </Link>
       <Suspense fallback={<div>Loading...</div>}>
         <MDXRemote
           source={content}
