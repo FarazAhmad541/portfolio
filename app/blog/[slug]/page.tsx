@@ -47,14 +47,16 @@ export default async function BlogPost({
 
   return (
     <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
-      <Header />
-      <Link
-        href='/'
-        className='flex justify-start max-h-5 items-center w-fit pb-4 gap-5 text-secondaryLight hover:text-light cursor-pointer transition-transform col-span-full'
-      >
-        <MoveLeft />
-        <p>Back To Home</p>
-      </Link>
+      <div className='max-h-fit'>
+        <Header />
+        <Link
+          href='/'
+          className='flex justify-start max-h-5 items-center w-fit pb-4 gap-5 text-secondaryLight hover:text-light cursor-pointer transition-transform col-span-full'
+        >
+          <MoveLeft />
+          <p>Back To Home</p>
+        </Link>
+      </div>
       <Suspense fallback={<div>Loading...</div>}>
         <MDXRemote
           source={content}
