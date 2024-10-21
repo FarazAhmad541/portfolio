@@ -1,5 +1,5 @@
 import { getPosts } from '@/lib/data'
-import HomeComponent from '@/ui/HomeComponent'
+import HomeComponent from '@/components/HomeComponent'
 
 export default async function Home() {
   const blogPosts = await getPosts()
