@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from 'clsx'
 import { easeInOut } from 'framer-motion'
+import { MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
 import { Inter, Roboto, Space_Grotesk } from 'next/font/google'
+import rehypePrettyCode from 'rehype-pretty-code'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
@@ -43,4 +45,15 @@ export const itemVariants = {
       easeInOut,
     },
   },
+}
+
+const options: import('rehype-pretty-code').Options = {
+  theme: 'tokyo-night',
+  keepBackground: false,
+}
+
+export const mdxRemoteOptions: MDXRemoteOptions = {
+  parseFrontmatter: false,
+
+  mdxOptions: { rehypePlugins: [[rehypePrettyCode, options]] },
 }

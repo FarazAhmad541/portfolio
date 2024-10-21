@@ -1,19 +1,13 @@
-import { getPostBySlug, getSlugs } from '@/lib/data'
-import { customeComponents } from '@/mdx-components'
 import Header from '@/components/Header'
+import { getPostBySlug, getSlugs } from '@/lib/data'
+import { mdxRemoteOptions } from '@/lib/utils'
+import { customeComponents } from '@/mdx-components'
 import { MoveLeft } from 'lucide-react'
 import { Metadata } from 'next'
-import type { MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import rehypePrettyCode from 'rehype-pretty-code'
-
-const options: import('rehype-pretty-code').Options = {
-  theme: 'tokyo-night',
-  keepBackground: false,
-}
 
 export async function generateStaticParams() {
   const slugs = await getSlugs()
@@ -50,12 +44,6 @@ export default async function BlogPost({
   }
 
   const content = post.body
-
-  const mdxRemoteOptions: MDXRemoteOptions = {
-    parseFrontmatter: false,
-
-    mdxOptions: { rehypePlugins: [[rehypePrettyCode, options]] },
-  }
 
   return (
     <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>

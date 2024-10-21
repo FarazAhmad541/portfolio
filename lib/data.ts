@@ -2,6 +2,7 @@
 import { ArticleSchema } from '@/lib/definitions'
 import { prisma } from '@/lib/prisma'
 export const getPosts = async () => {
+  console.log('GETTING POSTS')
   try {
     const posts = await prisma.article.findMany({
       where: { published: true },
@@ -19,6 +20,7 @@ export const getPosts = async () => {
 }
 
 export const getSlugs = async () => {
+  console.log('GETTING SLUGS')
   try {
     const slugs = await prisma.article.findMany({
       select: {
@@ -33,6 +35,7 @@ export const getSlugs = async () => {
 }
 
 export const getPostBySlug = async (slug: string) => {
+  console.log('GETTING POST BY SLUG')
   try {
     const post = prisma.article.findFirst({
       where: {
