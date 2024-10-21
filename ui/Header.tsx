@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <div className='col-span-full w-full sticky top-0 bg-dark md:max-w-[800px] flex items-center gap-10 justify-between, py-5 '>
+    <div className='col-span-full h-16 w-full sticky top-0 bg-dark md:max-w-[800px] flex items-center gap-10 justify-between, py-5 '>
       <Link href='/' className='text-lg leading-none font-bold text-light'>
         Faraz Ahmad.
       </Link>
