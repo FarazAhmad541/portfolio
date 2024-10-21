@@ -1,6 +1,6 @@
+import Header from '@/components/Header'
 import { getPostBySlug, getSlugs } from '@/lib/data'
 import { customeComponents } from '@/mdx-components'
-import Header from '@/ui/Header'
 import { MoveLeft } from 'lucide-react'
 import { Metadata } from 'next'
 import type { MDXRemoteOptions } from 'next-mdx-remote-client/rsc'

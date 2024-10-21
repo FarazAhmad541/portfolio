@@ -1,4 +1,5 @@
 'use server'
+import { ArticleSchema } from '@/lib/definitions'
 import { prisma } from '@/lib/prisma'
 export const getPosts = async () => {
   try {
@@ -41,5 +42,27 @@ export const getPostBySlug = async (slug: string) => {
     return post
   } catch (e) {
     console.log(e)
+  }
+}
+
+export const getAllBlogs = async () => {
+  try {
+    const blogs = await prisma.article.findMany()
+    return blogs
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export async function submitArticle(article: unknown) {
+  const parsedArticle = ArticleSchema.parse(article)
+  try {
+    const newArticle = await prisma.article.create({
+      data: parsedArticle,
+    })
+    return newArticle
+  } catch (error) {
+    console.log(error)
+    return error
   }
 }

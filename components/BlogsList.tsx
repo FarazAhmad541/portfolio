@@ -1,5 +1,5 @@
 import { BlogsListProps } from '@/lib/definitions'
-import { itemVariants } from '@/utils/framerMotionVariants'
+import { itemVariants } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'

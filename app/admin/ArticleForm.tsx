@@ -20,9 +20,9 @@ import {
 } from '@/components/ui/popover'
 import { Textarea } from '@/components/ui/textarea'
 
+import { submitArticle } from '@/lib/data'
 import { useAuth } from '@clerk/nextjs'
 import { useMutation } from '@tanstack/react-query'
-import { submitArticle } from './action'
 
 const MDXditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 

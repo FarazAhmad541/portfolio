@@ -1,7 +1,7 @@
 'use client'
 
 import { BlogsListProps } from '@/lib/definitions'
-import { containerVariants, itemVariants } from '@/utils/framerMotionVariants'
+import { containerVariants, itemVariants } from '@/lib/utils'
 import { Separator } from '@radix-ui/react-menubar'
 import { motion, useInView } from 'framer-motion'
 import { MonitorSmartphone } from 'lucide-react'

@@ -1,6 +1,6 @@
+import Footer from '@/components/Footer'
 import ReactQueryProvider from '@/lib/reactQueryProvider'
-import Footer from '@/ui/Footer'
-import { inter } from '@/utils/fonts'
+import { inter } from '@/lib/utils'
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
