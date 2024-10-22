@@ -58,7 +58,7 @@ export default async function BlogPost({
   }
 
   return (
-    <div className='bg-dark grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
+    <div className=' flex flex-col justify-start items-start gap-2 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
       <Header />
       <Link
         href='/'
