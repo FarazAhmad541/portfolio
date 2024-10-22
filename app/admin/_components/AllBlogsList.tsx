@@ -51,10 +51,12 @@ export default function AllBlogsList({ blogs }: Props) {
   }
 
   return (
-    <div className='flex flex-col gap-8 items-center justify-start mt-8 max-w-[800px] mx-auto'>
+    <div className='flex flex-col p-5 md:p-0 gap-8 items-center justify-start mt-8 max-w-[800px] mx-auto'>
       <div className='flex w-full justify-between items-center'>
         <div className='flex  items-center gap-8'>
-          <h1 className='font-bold text-4xl text-white'>List of Blogs</h1>
+          <h1 className='font-bold text-2xl md:text-4xl text-white'>
+            List of Blogs
+          </h1>
           <Button className='bg-green-500 hover:bg-green-600 mt-3'>
             <Link href={'/admin/add-new-blog'}>Add New</Link>
           </Button>
@@ -69,7 +71,7 @@ export default function AllBlogsList({ blogs }: Props) {
       {blogs?.map((blog, index: number) => (
         <div
           key={index}
-          className='flex gap-5 items-start w-full justify-between p-8 bg-gray-900 rounded-3xl'
+          className='flex flex-col md:flex-row lg:flex-row gap-5 items-start w-full justify-between p-8 bg-gray-900 rounded-3xl'
         >
           <div className='block cursor-pointer text-secondaryLight rounded-lg mt-2 transition-all hover:text-light'>
             <div className='flex justify-start items-start gap-5'>
