@@ -1,8 +1,4 @@
-import {
-  clerkMiddleware,
-  ClerkMiddlewareOptions,
-  createRouteMatcher,
-} from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
@@ -14,7 +10,7 @@ function customeMiddleware(request: NextRequest) {
   })
 }
 
-const isProtectedRoute = createRouteMatcher(['/admin'])
+const isProtectedRoute = createRouteMatcher(['/admin(.*)'])
 
 export default clerkMiddleware((auth, req) => {
   if (isProtectedRoute(req)) auth().protect()

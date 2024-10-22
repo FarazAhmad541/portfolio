@@ -1,5 +1,5 @@
 import ArticleForm from '../_components/ArticleForm'
 
 export default function AddNewBlog() {
-  return <ArticleForm />
+  return <ArticleForm blog={null} />
 }
