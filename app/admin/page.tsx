@@ -1,8 +1,10 @@
 import AllBlogsList from './_components/AllBlogsList'
-export default function Page() {
+import { getAllBlogs } from '@/lib/data'
+export default async function Page() {
+  const blogs = (await getAllBlogs()) || []
   return (
     <div className='flex-grow'>
-      <AllBlogsList />
+      <AllBlogsList blogs={blogs} />
     </div>
   )
 }

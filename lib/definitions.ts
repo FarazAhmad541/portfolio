@@ -9,22 +9,20 @@ export const ArticleSchema = z.object({
   body: z.string().min(1, 'Body is required'),
   published: z.boolean().optional(),
 })
-export interface Frontmatter {
-  title: string
-  slug: string
-  date: string
-  description: string
-  filename: string
-}
-export type BlogProps = {
-  blog: {
-    content: string
-  }
-}
 
 export type BlogsListProps = {
   title: string
   metaDescription: string
   createdAt: Date
   slug: string
+}
+
+export type BlogType = {
+  id: string
+  title: string
+  slug: string
+  createdAt: Date
+  metaDescription: string
+  body: string
+  published: boolean
 }

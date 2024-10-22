@@ -18,6 +18,8 @@ export default function RootLayout({
 }>) {
   const headerList = headers()
   const pathname = headerList.get('x-current-path')
+  const showFooter =
+    !pathname?.includes('/admin') && !pathname?.includes('/login')
   return (
     <html lang='en' className={inter.className}>
       <body>
@@ -25,7 +27,7 @@ export default function RootLayout({
           <ReactQueryProvider>
             <div className='flex flex-col min-h-screen'>
               {children}
-              {pathname !== '/login' && pathname !== '/admin' && <Footer />}
+              {showFooter && <Footer />}
             </div>
           </ReactQueryProvider>
         </ClerkProvider>

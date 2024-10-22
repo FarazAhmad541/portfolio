@@ -1,3 +1,5 @@
+'use client'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,18 +8,38 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { getAllBlogs } from '@/lib/data'
+import { revalidateBlogsList } from '@/lib/actions'
+import { deleteBlogById } from '@/lib/data'
+import { BlogType } from '@/lib/definitions'
+import { useMutation } from '@tanstack/react-query'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { useState } from 'react'
 
-export default async function AllBlogsList() {
-  const blogs = await getAllBlogs()
+type Props = {
+  blogs: BlogType[] | []
+}
+
+export default function AllBlogsList({ blogs }: Props) {
+  //Select Blog by ID
+  const [selectedBlog, setSelectedBlog] = useState<string>('')
+
+  const { mutate: deleteBlog, isPending } = useMutation({
+    mutationFn: deleteBlogById,
+    onSuccess: () => console.log('success'),
+  })
+
+  const handleDelete = (id: string) => {
+    deleteBlog(id)
+    revalidateBlogsList()
+  }
+
   return (
     <div className='flex flex-col gap-8 items-center justify-start mt-8 max-w-[800px] mx-auto'>
       <div className='flex justify-between items-center w-full'>
         <h1 className='font-bold text-4xl text-white'>List of Blogs</h1>
         <Link
-          href={''}
+          href={'/admin/add-new-blog'}
           className='px-6 py-2 mt-3 bg-green-600 text-white rounded-md hover:bg-green-700                                                                           '
         >
           Add New
@@ -47,15 +69,26 @@ export default async function AllBlogsList() {
             </div>
             <p className='mt-3'>{blog.metaDescription}</p>
           </div>
+
           <DropdownMenu>
-            <DropdownMenuTrigger className='px-6 py-2 mt-3 bg-indigo-500 text-white rounded-md hover:bg-indigo-600'>
+            <DropdownMenuTrigger
+              className={clsx(
+                'px-6 py-2 mt-3 bg-indigo-500 text-white rounded-md hover:bg-indigo-600',
+                isPending && 'cursor-not-allowed pointer-events-none'
+              )}
+            >
               Actions
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>Blog Actions</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Edit</DropdownMenuItem>
-              <DropdownMenuItem>Delete</DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => handleDelete(blog.id)}
+                className='bg-red-500 text-red-950 cursor-pointer focus:bg-red-600'
+              >
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -59,10 +59,10 @@ export default function ArticleForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className='max-w-4xl mx-auto p-6 space-y-8'
+      className='w-full mx-auto p-4 space-y-4 sm:p-6 sm:space-y-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl'
     >
-      <div className='flex justify-between items-center px-7'>
-        <h1 className='text-3xl font-bold text-center text-primary'>
+      <div className='flex justify-between items-center px-4 sm:px-7'>
+        <h1 className='text-xl md:text-3xl font-bold text-center text-primary'>
           Create New Article
         </h1>
         <Button
@@ -77,7 +77,7 @@ export default function ArticleForm() {
         onSubmit={handleSubmit}
         className='rounded-lg shadow-lg overflow-hidden text-gray-100'
       >
-        <div className='p-6 space-y-6'>
+        <div className='p-3 space-y-6'>
           <motion.div
             className='grid grid-cols-1 md:grid-cols-2 gap-6'
             initial={{ opacity: 0 }}

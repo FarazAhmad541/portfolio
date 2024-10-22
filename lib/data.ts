@@ -54,6 +54,19 @@ export const getAllBlogs = async () => {
   }
 }
 
+export const deleteBlogById = async (id: string) => {
+  try {
+    await prisma.article.delete({
+      where: {
+        id: id,
+      },
+    })
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
 export async function submitArticle(article: unknown) {
   const parsedArticle = ArticleSchema.parse(article)
   try {
