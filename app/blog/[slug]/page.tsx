@@ -7,7 +7,6 @@ import type { MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
 import rehypePrettyCode from 'rehype-pretty-code'
 
 const options: import('rehype-pretty-code').Options = {
@@ -67,14 +66,11 @@ export default async function BlogPost({
         <MoveLeft />
         <p>Back To Home</p>
       </Link>
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <MDXRemote
-          source={content}
-          components={customeComponents}
-          options={mdxRemoteOptions}
-        />
-      </Suspense>
+      <MDXRemote
+        source={content}
+        components={customeComponents}
+        options={mdxRemoteOptions}
+      />
     </div>
   )
 }
