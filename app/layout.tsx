@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer'
 import ReactQueryProvider from '@/lib/reactQueryProvider'
 import { inter } from '@/lib/utils'
-import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import './globals.css'
@@ -23,14 +22,12 @@ export default function RootLayout({
   return (
     <html lang='en' className={inter.className}>
       <body>
-        <ClerkProvider>
-          <ReactQueryProvider>
-            <div className='flex flex-col min-h-screen'>
-              {children}
-              {showFooter && <Footer />}
-            </div>
-          </ReactQueryProvider>
-        </ClerkProvider>
+        <ReactQueryProvider>
+          <div className='flex flex-col min-h-screen'>
+            {children}
+            {showFooter && <Footer />}
+          </div>
+        </ReactQueryProvider>
       </body>
     </html>
   )
