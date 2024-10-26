@@ -1,56 +1,56 @@
-'use client'
+"use client";
 
-import { BlogsListProps } from '@/lib/definitions'
-import { containerVariants, itemVariants } from '@/lib/utils'
-import { Separator } from '@radix-ui/react-menubar'
-import { motion, useInView } from 'framer-motion'
-import { MonitorSmartphone } from 'lucide-react'
-import Image from 'next/image'
-import { useRef } from 'react'
-import profile from '../assets/Faraz.png'
-import BlogsList from './BlogsList'
+import { BlogsListProps } from "@/lib/definitions";
+import { containerVariants, itemVariants } from "@/lib/utils";
+import { Separator } from "@radix-ui/react-menubar";
+import { motion, useInView } from "framer-motion";
+import { MonitorSmartphone } from "lucide-react";
+import Image from "next/image";
+import { useRef } from "react";
+import profile from "../assets/Faraz.png";
+import BlogsList from "./BlogsList";
 
 type HomeProps = {
-  blogPosts: BlogsListProps[]
-}
+  blogPosts: BlogsListProps[];
+};
 
 export default function Home({ blogPosts }: HomeProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <motion.div
       ref={ref}
-      initial='hidden'
-      animate={isInView ? 'visible' : 'hidden'}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className='bg-dark flex-grow  p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'
+      className="bg-dark flex-grow  p-2 w-11/12 mx-auto md:max-w-[800px] mt-20"
     >
-      <div className='grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 '>
+      <div className="grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 ">
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12'
+          className="col-span-6 md:col-span-12 lg:col-span-12"
         >
-          <div className='flex items-center gap-5 w-full justify-start'>
+          <div className="flex items-center gap-5 w-full justify-start">
             <Image
               src={profile}
-              alt='Faraz'
+              alt="Faraz"
               width={50}
               height={50}
-              className='rounded-full'
+              className="rounded-full"
             />
-            <div className='flex flex-col justify-start items-start gap-0 mt-2'>
-              <h1 className='text-lg leading-none font-bold text-light'>
+            <div className="flex flex-col justify-start items-start gap-0 mt-2">
+              <h1 className="text-lg leading-none font-bold text-light">
                 Faraz Ahmad.
               </h1>
-              <div className='flex gap-2 items-center'>
+              <div className="flex gap-2 items-center">
                 <MonitorSmartphone
                   width={15}
                   height={15}
-                  className='mb-1'
-                  color='#bfbfbf'
+                  className="mb-1"
+                  color="#bfbfbf"
                 />
-                <p className='text-secondaryLight text-sm leading-8'>
+                <p className="text-secondaryLight text-sm leading-8">
                   Frontend Developer
                 </p>
               </div>
@@ -60,9 +60,9 @@ export default function Home({ blogPosts }: HomeProps) {
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12'
+          className="col-span-6 md:col-span-12 lg:col-span-12"
         >
-          <p className='text-light text-base leading-[1.6rem] font-base'>
+          <p className="text-light text-base leading-[1.6rem] font-normal">
             A web developer with a knack for crafting sleek, responsive, and
             user-friendly experiences. Armed with React and Next.js, I turn
             complex problems into elegant solutions. Always eager to expand my
@@ -72,21 +72,21 @@ export default function Home({ blogPosts }: HomeProps) {
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center'
+          className="col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center"
         >
-          <SocialLink href='https://github.com/FarazAhmad541' label='Github' />
+          <SocialLink href="https://github.com/FarazAhmad541" label="Github" />
           <SocialLink
-            href='https://www.linkedin.com/in/faraz-ahmad-fsd'
-            label='LinkedIn'
+            href="https://www.linkedin.com/in/faraz-ahmad-fsd"
+            label="LinkedIn"
           />
-          <SocialLink href='mailto: faraz.ahmad.fsd@gmail.com' label='Email' />
+          <SocialLink href="mailto: faraz.ahmad.fsd@gmail.com" label="Email" />
         </motion.div>
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center justify-between'
+          className="col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center justify-between"
         >
-          <p className='text-md font-semibold text-light'>
+          <p className="text-md font-bold text-light">
             The Stuff I Learned Along The Way
           </p>
           {/* <div className='flex items-center gap-2 text-secondaryLight hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'>
@@ -97,23 +97,23 @@ export default function Home({ blogPosts }: HomeProps) {
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12'
+          className="col-span-6 md:col-span-12 lg:col-span-12"
         >
-          <Separator className=' bg-secondaryLight h-px' />
+          <Separator className=" bg-secondaryLight h-px" />
         </motion.div>
         <BlogsList blogPosts={blogPosts} />
       </div>
     </motion.div>
-  )
+  );
 }
 function SocialLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
-      target='_blank'
-      className='flex items-center gap-2 text-secondaryLight hover:text-light '
+      target="_blank"
+      className="flex items-center gap-2 text-secondaryLight hover:text-light "
     >
       {label}
     </a>
-  )
+  );
 }
