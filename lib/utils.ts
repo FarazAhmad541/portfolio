@@ -1,16 +1,18 @@
-import { clsx, type ClassValue } from "clsx";
-import { easeInOut } from "framer-motion";
-import { Inter } from "next/font/google";
-import { twMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from 'clsx'
+import { easeInOut } from 'framer-motion'
+import fs from 'fs'
+import { Inter } from 'next/font/google'
+import path from 'path'
+import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs))
 }
 
 export const inter = Inter({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
+  weight: ['400', '700'],
+  subsets: ['latin'],
+})
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,7 +23,7 @@ const containerVariants = {
       easeInOut,
     },
   },
-};
+}
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -33,6 +35,8 @@ const itemVariants = {
       easeInOut,
     },
   },
-};
+}
 
-export { containerVariants, itemVariants };
+
+
+export { containerVariants, itemVariants }

@@ -1,48 +1,59 @@
-"use server";
-import { ArticleSchema, BlogType } from "@/lib/definitions";
-import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-export const getPosts = async () => {
-  try {
-    const posts = await prisma.article.findMany({
-      where: { published: true },
-      select: {
-        title: true,
-        slug: true,
-        metaDescription: true,
-        createdAt: true,
-      },
-    });
-    return posts;
-  } catch (e) {
-    console.log(e);
-  }
-};
+'use server'
+import fs from 'fs'
+import matter from 'gray-matter'
+import path from 'path'
 
-export const getSlugs = async () => {
-  try {
-    const slugs = await prisma.article.findMany({
-      select: {
-        slug: true,
-      },
-    });
-    return slugs;
-  } catch (e) {
-    console.log(e);
-    return [];
-  }
-};
+const articlesDirectory = path.join(process.cwd(), 'articles')
 
-export const getPostBySlug = async (slug: string) => {
-  try {
-    const post = prisma.article.findFirst({
-      where: {
-        slug: slug,
-      },
-    });
-    return post;
-  } catch (e) {
-    console.log(e);
+export async function getAllArticles(): Promise<
+  {
+    slug: string
+    frontmatter: { title: string; createdAt: Date; metaDescription: string }
+  }[]
+> {
+  const files = getAllFiles(articlesDirectory)
+  const posts = files.map((filePath) => {
+    const slug = filePath
+      .replace(articlesDirectory, '')
+      .replace(/^\//, '')
+      .replace(/\.mdx$/, '')
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+
+    const { data: frontmatter } = matter(fileContents)
+    return {
+      slug,
+      frontmatter,
+    }
+  })
+
+  return posts as {
+    slug: string
+    frontmatter: { title: string; createdAt: Date; metaDescription: string }
+  }[]
+}
+
+export async function getArticleBySlug(slug: string) {
+  const filePath = path.join(articlesDirectory, `${slug}.mdx`)
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  const { content: source, data: frontmatter } = matter(fileContents)
+  return {
+    frontmatter,
+    source,
   }
-};
+}
+
+function getAllFiles(dir: string) {
+  const files = fs.readdirSync(dir)
+  let allFiles: string[] = []
+
+  files.forEach((file) => {
+    const filePath = path.join(dir, file)
+    if (fs.statSync(filePath).isDirectory()) {
+      allFiles = allFiles.concat(getAllFiles(filePath))
+    } else if (path.extname(file) === '.mdx') {
+      allFiles.push(filePath)
+    }
+  })
+
+  return allFiles
+}

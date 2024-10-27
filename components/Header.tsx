@@ -1,4 +1,3 @@
-import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 
 export default function Header() {
@@ -8,7 +7,7 @@ export default function Header() {
         Faraz Ahmad.
       </Link>
 
-      <Separator orientation='vertical' />
+      <div className='h-full w-[2px] bg-secondaryLight'></div>
 
       <div className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center'>
         <SocialLink href='https://github.com/FarazAhmad541' label='Github' />

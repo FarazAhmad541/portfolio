@@ -1,12 +1,11 @@
 import HomeComponent from '@/components/HomeComponent'
-import { getPosts } from '@/lib/data'
+import { getAllArticles } from '@/lib/data'
 
 export default async function Home() {
-  const blogPosts = (await getPosts()) || []
-
+  const posts = await getAllArticles()
   return (
     <>
-      <HomeComponent blogPosts={blogPosts} />
+      <HomeComponent blogPosts={posts} />
     </>
   )
 }
