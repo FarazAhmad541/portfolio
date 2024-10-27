@@ -28,7 +28,7 @@ function h6({ children }: PropsWithChildren<object>) {
 
 function p({ children }: PropsWithChildren<object>) {
   return (
-    <p className='text-base p-2 text-secondaryLigh font-normal leading-7 tracking-wide'>
+    <p className='text-base py-2 text-secondaryLigh font-normal leading-7 tracking-wide'>
       {children}
     </p>
   )
