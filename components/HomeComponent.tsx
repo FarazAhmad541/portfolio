@@ -1,13 +1,13 @@
 'use client'
 
 import { containerVariants, itemVariants } from '@/lib/utils'
-import { Separator } from '@radix-ui/react-menubar'
 import { motion, useInView } from 'framer-motion'
 import { MonitorSmartphone } from 'lucide-react'
 import Image from 'next/image'
 import { useRef } from 'react'
 import profile from '../assets/Faraz.png'
 import BlogsList from './BlogsList'
+import ThemeSwitch from './ThemeSwitch'
 
 type HomeProps = {
   blogPosts: {
@@ -26,12 +26,12 @@ export default function Home({ blogPosts }: HomeProps) {
       initial='hidden'
       animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}
-      className='bg-dark flex-grow  p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'
+      className='bg-light dark:bg-dark flex-grow  p-2 w-11/12 mx-auto md:max-w-[800px] mt-20'
     >
-      <div className='grid grid-cols-6 gap-5 md:grid-cols-12 md:gap-5 lg:grid-cols-12 lg:gap-5 '>
+      <div className='flex flex-col gap-5 justify-start items-start w-full'>
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12'
+          className='w-full flex items-center justify-between'
         >
           <div className='flex items-center gap-5 w-full justify-start'>
             <Image
@@ -39,10 +39,10 @@ export default function Home({ blogPosts }: HomeProps) {
               alt='Faraz'
               width={50}
               height={50}
-              className='rounded-full'
+              className='rounded-full filter-blur'
             />
             <div className='flex flex-col justify-start items-start gap-0 mt-2'>
-              <h1 className='text-lg leading-none font-bold text-light'>
+              <h1 className='text-lg leading-none font-bold text-dark dark:text-light'>
                 Faraz Ahmad.
               </h1>
               <div className='flex gap-2 items-center'>
@@ -52,19 +52,20 @@ export default function Home({ blogPosts }: HomeProps) {
                   className='mb-1'
                   color='#bfbfbf'
                 />
-                <p className='text-secondaryLight text-sm leading-8'>
+                <p className='text-secondaryDarkdark:text-secondaryLight text-sm leading-8'>
                   Frontend Developer
                 </p>
               </div>
             </div>
           </div>
+          <ThemeSwitch />
         </motion.div>
 
         <motion.div
           variants={itemVariants}
           className='col-span-6 md:col-span-12 lg:col-span-12'
         >
-          <p className='text-light text-base leading-[1.6rem] font-normal'>
+          <p className='text-dark dark:text-light text-base leading-[1.6rem] font-normal'>
             A web developer with a knack for crafting sleek, responsive, and
             user-friendly experiences. Armed with React and Next.js, I turn
             complex problems into elegant solutions. Always eager to expand my
@@ -88,7 +89,7 @@ export default function Home({ blogPosts }: HomeProps) {
           variants={itemVariants}
           className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center justify-between'
         >
-          <p className='text-md font-bold text-light'>
+          <p className='text-md font-bold text-darkdark:text-light'>
             The Stuff I Learned Along The Way
           </p>
           {/* <div className='flex items-center gap-2 text-secondaryLight hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'>
@@ -99,12 +100,21 @@ export default function Home({ blogPosts }: HomeProps) {
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12'
-        >
-          <Separator className=' bg-secondaryLight h-px' />
-        </motion.div>
+          className='w-full h-px bg-secondaryDark dark:bg-secondaryLight'
+        ></motion.div>
         <BlogsList blogPosts={blogPosts} />
       </div>
+      <svg width='0' height='0'>
+        <filter id='blur-and-scale' y='-50%' x='-50%' width='200%' height='200'>
+          <feGaussianBlur
+            in='SourceGraphic'
+            stdDeviation='8'
+            result='blurred'
+          />
+          <feColorMatrix type='saturate' values='4' />
+          <feComposite in='SourceGraphic' operator='over' />
+        </filter>
+      </svg>
     </motion.div>
   )
 }
@@ -113,7 +123,7 @@ function SocialLink({ href, label }: { href: string; label: string }) {
     <a
       href={href}
       target='_blank'
-      className='flex items-center gap-2 text-secondaryLight hover:text-light '
+      className='flex items-center gap-2 text-secondaryDark hover:text-dark dark:text-secondaryLight dark:hover:text-light '
     >
       {label}
     </a>

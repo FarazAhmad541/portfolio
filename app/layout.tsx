@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 
+import NextThemeProvider from '@/lib/themeProvider'
 import { inter } from '@/lib/utils'
 import type { Metadata } from 'next'
 import './globals.css'
@@ -15,12 +16,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={inter.className}>
-      <body>
-        <div className='flex flex-col min-h-screen'>
-          {children}
-          <Footer />
-        </div>
+    <html lang='en' className={inter.className} suppressHydrationWarning>
+      <body className='bg-light dark:bg-dark'>
+        <NextThemeProvider>
+          <div className='flex flex-col min-h-screen'>
+            {children}
+            <Footer />
+          </div>
+        </NextThemeProvider>
       </body>
     </html>
   )

@@ -21,11 +21,13 @@ export default function BlogsList({ blogPosts }: ParamsType) {
         >
           <Link
             href={`/${post.slug}`}
-            className='block cursor-pointer text-secondaryLight bg-dark rounded-lg py-5 mt-2 transition-all hover:text-light'
+            className='block cursor-pointer text-secondaryDark dark:text-secondaryLight rounded-lg py-5 mt-2 transition-all hover:text-dark dark:hover:text-light'
           >
             <div className='flex justify-start items-start gap-5'>
               <div>
-                <h2 className='text-light'>{post.frontmatter.title}</h2>
+                <h2 className='text-dark dark:text-light'>
+                  {post.frontmatter.title}
+                </h2>
                 <p>{post.frontmatter.createdAt.toISOString().slice(0, 10)}</p>
               </div>
               <ArrowRight className='w-6 h-6 transition-transform duration-300 group-hover:transform group-hover:-rotate-45 ease-in-out' />

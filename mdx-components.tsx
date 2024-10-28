@@ -3,38 +3,56 @@ import type { MDXComponents } from 'mdx/types'
 import { ComponentProps, PropsWithChildren } from 'react'
 
 function h1({ children }: PropsWithChildren<object>) {
-  return <h1 className='text-light font-bold text-3xl '>{children}</h1>
+  return (
+    <h1 className='text-dark dark:text-light  font-bold text-3xl '>
+      {children}
+    </h1>
+  )
 }
 
 function h2({ children }: PropsWithChildren<object>) {
-  return <h2 className='text-2xl font-bold mt-8 text-light'>{children}</h2>
+  return (
+    <h2 className='text-2xl font-bold mt-8 text-dark dark:text-light'>
+      {children}
+    </h2>
+  )
 }
 
 function h3({ children }: PropsWithChildren<object>) {
-  return <h3 className='text-xl font-bold '>{children}</h3>
+  return (
+    <h3 className='text-xl font-bold text-dark dark:text-light'>{children}</h3>
+  )
 }
 
 function h4({ children }: PropsWithChildren<object>) {
-  return <h4 className='text-lg font-bold '>{children}</h4>
+  return (
+    <h4 className='text-lg font-bold text-dark dark:text-light '>{children}</h4>
+  )
 }
 
 function h5({ children }: PropsWithChildren<object>) {
-  return <h5 className='text-base font-bold text-light '>{children}</h5>
+  return (
+    <h5 className='text-base font-bold text-dark dark:text-light '>
+      {children}
+    </h5>
+  )
 }
 
 function h6({ children }: PropsWithChildren<object>) {
-  return <h6 className='text-sm font-bold text-light '>{children}</h6>
+  return (
+    <h6 className='text-sm font-bold text-dark dark:text-light '>{children}</h6>
+  )
 }
 
 function p({ children }: PropsWithChildren<object>) {
   return (
-    <p className='text-base py-2 text-secondaryLigh font-normal leading-7 tracking-wide'>
+    <p className='text-base font-mediumz py-2 text-secondaryDark dark:text-secondaryLight leading-7 tracking-wider'>
       {children}
     </p>
   )
 }
 function li({ children }: PropsWithChildren<object>) {
-  return <li className='text-base my-4 leading-7 tracking-wide'>{children}</li>
+  return <li className='text-base my-4 leading-7'>{children}</li>
 }
 
 function InfoBlock({ children }: { children: React.ReactNode }) {
@@ -47,7 +65,7 @@ function InfoBlock({ children }: { children: React.ReactNode }) {
 
 function ol({ children }: PropsWithChildren<object>) {
   return (
-    <ol className='text-base list-decimal pl-5 text-light font-bold leading-7 tracking-wide'>
+    <ol className='text-base list-decimal pl-5 text-dark dark:text-light font-bold leading-7'>
       {children}
     </ol>
   )
@@ -70,7 +88,7 @@ function a(props: ComponentType<'a'>) {
   return (
     <a
       {...props}
-      className='text-light hover:text-ligth hover:underline cursor-pointer'
+      className='text-dark dark:text-light hover:text-ligth hover:underline cursor-pointer underline'
       target='_blank'
     >
       {props.children}

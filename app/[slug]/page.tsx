@@ -40,7 +40,7 @@ export default async function BlogPost({
       <Header />
       <Link
         href='/'
-        className='flex max-h-fit justify-start items-center w-fit pb-4 gap-5 text-secondaryLight hover:text-light cursor-pointer transition-transform col-span-full'
+        className='flex max-h-fit justify-start items-center w-fit pb-4 gap-5 text-secondaryDark hover:text-dark dark:text-secondaryLight dark:hover:text-light cursor-pointer transition-transform col-span-full'
       >
         <MoveLeft />
         <p>Back To Home</p>
