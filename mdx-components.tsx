@@ -46,7 +46,7 @@ function h6({ children }: PropsWithChildren<object>) {
 
 function p({ children }: PropsWithChildren<object>) {
   return (
-    <p className='text-base font-mediumz py-2 text-secondaryDark dark:text-secondaryLight leading-7 tracking-wider'>
+    <p className='text-base font-mediumz py-2 text-secondaryDark dark:text-secondaryLight leading-7 tracking-wide'>
       {children}
     </p>
   )
@@ -72,7 +72,7 @@ function ol({ children }: PropsWithChildren<object>) {
 }
 function ul({ children }: PropsWithChildren<object>) {
   return (
-    <ul className='text-base list-disc pl-5 leading-7 tracking-wide'>
+    <ul className='text-base list-disc pl-5 leading-7 tracking-wide text-secondaryDark dark:text-secondaryLight'>
       {children}
     </ul>
   )

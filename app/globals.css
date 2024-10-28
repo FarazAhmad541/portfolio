@@ -117,3 +117,6 @@ figcaption[data-rehype-pretty-code-title] {
   line-height: 1rem;
   color: #bfbfbf;
 }
+code[data-line-numbers][data-language='plaintext'] span[data-line] span {
+  color: #bfbfbf;
+}

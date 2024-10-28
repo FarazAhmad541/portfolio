@@ -1,8 +1,6 @@
 import { clsx, type ClassValue } from 'clsx'
 import { easeInOut } from 'framer-motion'
-import fs from 'fs'
 import { Inter } from 'next/font/google'
-import path from 'path'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
@@ -36,7 +34,5 @@ const itemVariants = {
     },
   },
 }
-
-
 
 export { containerVariants, itemVariants }
