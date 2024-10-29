@@ -5,14 +5,14 @@ createdAt: 2023-01-02
 ---
 
 # Create Your Own Blog Using Next.js and MDX
-In this article, we will learn how to create a blog using Next.js and MDX. 
-We will cover the basics of using MDX, how to create a custom component, 
+In this article, we will learn how to create a blog using Next.js and MDX.
+We will cover the basics of using MDX, how to create a custom components,
 and how to use MDX with a remote source.
 ## Why use Markdown?
-Markdown is a simple and easy-to-use markup language that can help you 
-format a document easily. It is one of the easiest ways to create a simple blog 
-or any text-heavy page. Most of the documentation of modern languages, libraries, and 
-frameworks is just markdown pages hosted on GitHub or some other database and then rendered 
+Markdown is a simple and easy-to-use markup language that can help you
+format a document easily. It is one of the easiest ways to create a simple blog
+or any text-heavy page. Most of the documentation of modern languages, libraries, and
+frameworks is just markdown pages hosted on GitHub or some other database and then rendered
 on their website using one of the Markdown-based frameworks like MDX, Markdoc, etc.
 
 One of the greatest benefits of this approach of creating text-heavy pages is that you don't have to mess with the website's code every time you need to make changes to the content on the page. You just open the document in any text editor, make the changes, save it, and it will be reflected on your website.
@@ -24,15 +24,14 @@ One of the greatest benefits of this approach of creating text-heavy pages is th
 
 <InfoBlock>The reason I chose to use Next.js for this project instead of React.js is
 that the libraries that are used by Markdown formatters like MDX and
-Markdoc to format markdown files are quite heavy, and shipping all that JS
-code to client side on page request can slow down the page load speeds.</InfoBlock>
-
-
-This problem is handled by Next.js out of the box as it allows to generate static pages at build time rather than at request time.
+Markdoc to format markdown files are CPU intensive, and if the markdown file is large
+then rendering all that on client side can increase page load timees.
+Using Nest.js these files can be rendered on the server at build time and the prerendered
+HTML can be sent to the client, that can significantly increase page load speeds.</InfoBlock>
 
 Now let's dive deep into how you can use MDX to render your own blogs from markdown files in Next.js.
 
- 1. First, you need to install all the necessary dependencies for this project.
+ 1. First, you need to install all the dependencies for the project.
 
 ```bash
 npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
@@ -132,7 +131,6 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './ui/**/*.{js,ts,jsx,tsx,mdx}',
     './mdx-components.tsx',
   ],
 
@@ -141,15 +139,15 @@ const config: Config = {
 }
 export default config
 ```
-Without this the Tailwind classes present in *`mdx-component.tsx`* are removed as a result of tree shaking process at build time. 
+Without this the Tailwind classes present in *`mdx-component.tsx`* are removed as a result of tree shaking process at build time.
 This single line of code will tell the Next.js bundler to include the styles of our custom components in the final build.
 
 4. Rendering MDX Component.
 
-Now you are ready to create a new MDX component and render it in your application 
+Now you are ready to create a new MDX component and render it in your application
 either as a standalone page or import it into your code as you would any other React component.
 
-- ### Using File Based Routing.
+- ###### Using File Based Routing.
 
 When using file-based routing, you can use MDX pages like any other page.
 
@@ -189,15 +187,15 @@ export default function Home() {
 
 ## Using MDX-Remote.
 
-If your markdown files are hosted on some external source like GitHub Pages or some database,
+If your markdown files are hosted on some external source like GitHub Pages, database or CMS,
 you can use the *`MDXRemote`* component to render the markdown files from the remote source.
 
-- ### First, you need to install the following package.
+- ###### First, you need to install the following package.
 
 ```bash
 npm install next-mdx-remote-client/rsc
 ```
-This package provides us a function *`MDXRemote`*. It is different from *`next-mdx-remote/rsc`* package mentioned in the Next.js docs, but has better comprehensive documentation and is more actively maintained.
+This package provides us a function *`MDXRemote`*. This package is different from *`next-mdx-remote/rsc`* package mentioned in the Next.js docs, but has better comprehensive documentation and is more actively maintained.
 
 To use this component, just use *`fetch`* or any other method to get the markdown in string format
 and pass it to the *`source`* prop of the *`MDXRemote`* component.
