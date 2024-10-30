@@ -3,26 +3,29 @@ import { getAllArticles, getArticleBySlug } from '@/lib/data'
 import { customeComponents } from '@/mdx-components'
 import matter from 'gray-matter'
 import { MoveLeft } from 'lucide-react'
-import { MDXRemote, MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
+import type { Metadata } from 'next'
+import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import Link from 'next/link'
-import rehypePrettyCode from 'rehype-pretty-code'
-
-const rehypeOptions: import('rehype-pretty-code').Options = {
-  theme: 'tokyo-night',
-  keepBackground: false,
-}
-
-const mdxRemoteOptions: MDXRemoteOptions = {
-  parseFrontmatter: false,
-
-  mdxOptions: { rehypePlugins: [[rehypePrettyCode, rehypeOptions]] },
-}
+import { mdxRemoteOptions } from '../../lib/utils'
 
 export async function generateStaticParams() {
   const posts = await getAllArticles()
   return posts.map((post) => ({
     slug: post.slug,
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const post = await getArticleBySlug(params.slug)
+  return {
+    title: post.frontmatter.title,
+    description: post.frontmatter.metaDescription,
+    keywords: post.frontmatter.keywords,
+  }
 }
 
 export default async function BlogPost({

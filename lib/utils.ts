@@ -1,6 +1,7 @@
 import { easeInOut } from 'framer-motion'
+import { MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
 import { Inter } from 'next/font/google'
-
+import rehypePrettyCode from 'rehype-pretty-code'
 export const inter = Inter({
   weight: ['400', '700'],
   subsets: ['latin'],
@@ -29,4 +30,15 @@ const itemVariants = {
   },
 }
 
-export { containerVariants, itemVariants }
+const rehypeOptions: import('rehype-pretty-code').Options = {
+  theme: 'tokyo-night',
+  keepBackground: false,
+}
+
+const mdxRemoteOptions: MDXRemoteOptions = {
+  parseFrontmatter: false,
+
+  mdxOptions: { rehypePlugins: [[rehypePrettyCode, rehypeOptions]] },
+}
+
+export { containerVariants, itemVariants, mdxRemoteOptions }

@@ -28,7 +28,12 @@ export async function getAllArticles(): Promise<
 
   return posts as {
     slug: string
-    frontmatter: { title: string; createdAt: Date; metaDescription: string }
+    frontmatter: {
+      title: string
+      createdAt: Date
+      metaDescription: string
+      keywords: string[]
+    }
   }[]
 }
 
