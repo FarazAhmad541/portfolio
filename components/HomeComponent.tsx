@@ -47,12 +47,9 @@ export default function Home({ blogPosts }: HomeProps) {
                 Faraz Ahmad.
               </h1>
               <div className='flex gap-2 items-center'>
-                <MonitorSmartphone
-                  width={15}
-                  height={15}
-                  className='mb-1'
-                  color='#bfbfbf'
-                />
+                <div className='w-4 h-4 mb-1 text-secondaryDark dark:text-secondaryLight'>
+                  <MonitorSmartphone />
+                </div>
                 <p className='text-secondaryDarkdark:text-secondaryLight text-sm leading-8'>
                   Frontend Developer
                 </p>
