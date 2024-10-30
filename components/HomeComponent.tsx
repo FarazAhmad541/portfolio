@@ -2,8 +2,9 @@
 
 import { containerVariants, itemVariants } from '@/lib/utils'
 import { motion, useInView } from 'framer-motion'
-import { MonitorSmartphone } from 'lucide-react'
+import { MonitorSmartphone, MoveRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRef } from 'react'
 import profile from '../assets/Faraz.png'
 import BlogsList from './BlogsList'
@@ -61,10 +62,7 @@ export default function Home({ blogPosts }: HomeProps) {
           <ThemeSwitch />
         </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12'
-        >
+        <motion.div variants={itemVariants} className='w-full '>
           <p className='text-dark dark:text-light text-base leading-[1.6rem] font-normal'>
             A web developer with a knack for crafting sleek, responsive, and
             user-friendly experiences. Armed with React and Next.js, I turn
@@ -75,7 +73,7 @@ export default function Home({ blogPosts }: HomeProps) {
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center'
+          className='w-full  flex gap-5 items-center'
         >
           <SocialLink href='https://github.com/FarazAhmad541' label='Github' />
           <SocialLink
@@ -87,15 +85,18 @@ export default function Home({ blogPosts }: HomeProps) {
 
         <motion.div
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center justify-between'
+          className='w-full  flex gap-5 items-center justify-between'
         >
           <p className='text-md font-bold text-darkdark:text-light'>
             The Stuff I Learned Along The Way
           </p>
-          {/* <div className='flex items-center gap-2 text-secondaryLight hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'>
+          <Link
+            href='/blogs'
+            className='flex items-center gap-2 text-secondaryLight hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'
+          >
             <p className='text-sm'>See All</p>
             <MoveRight className='w-5 h-5' />
-          </div> */}
+          </Link>
         </motion.div>
 
         <motion.div

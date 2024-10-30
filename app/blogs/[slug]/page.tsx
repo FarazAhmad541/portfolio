@@ -1,12 +1,11 @@
+import BackButton from '@/components/BackButton'
 import Header from '@/components/Header'
 import { getAllArticles, getArticleBySlug } from '@/lib/data'
 import { customeComponents } from '@/mdx-components'
 import matter from 'gray-matter'
-import { MoveLeft } from 'lucide-react'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
-import Link from 'next/link'
-import { mdxRemoteOptions } from '../../lib/utils'
+import { mdxRemoteOptions } from '../../../lib/utils'
 
 export async function generateStaticParams() {
   const posts = await getAllArticles()
@@ -41,13 +40,7 @@ export default async function BlogPost({
   return (
     <div className=' flex flex-col justify-start items-start gap-2 p-2 w-11/12 mx-auto md:max-w-[800px] my-20 flex-grow'>
       <Header />
-      <Link
-        href='/'
-        className='flex max-h-fit justify-start items-center w-fit pb-4 gap-5 text-secondaryDark hover:text-dark dark:text-secondaryLight dark:hover:text-light cursor-pointer transition-transform col-span-full'
-      >
-        <MoveLeft />
-        <p>Back To Home</p>
-      </Link>
+      <BackButton />
       <MDXRemote
         source={content}
         components={customeComponents}

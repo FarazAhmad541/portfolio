@@ -17,10 +17,10 @@ export default function BlogsList({ blogPosts }: ParamsType) {
         <motion.div
           key={index}
           variants={itemVariants}
-          className='col-span-6 md:col-span-12 lg:col-span-12 flex gap-5 items-center justify-between group'
+          className='w-full flex gap-5 items-center justify-between group'
         >
           <Link
-            href={`/${post.slug}`}
+            href={`/blogs/${post.slug}`}
             className='block cursor-pointer text-secondaryDark dark:text-secondaryLight rounded-lg py-5 mt-2 transition-all hover:text-dark dark:hover:text-light'
           >
             <div className='flex justify-start items-start gap-5'>
