@@ -46,8 +46,8 @@ export default function Home({ blogPosts }: HomeProps) {
               <h1 className='text-lg leading-none font-bold text-dark dark:text-light'>
                 Faraz Ahmad.
               </h1>
-              <div className='flex gap-2 items-center'>
-                <div className='w-4 h-4 mb-1 text-secondaryDark dark:text-secondaryLight'>
+              <div className='flex gap-1 items-center'>
+                <div className='w-6 text-secondaryDark dark:text-secondaryLight'>
                   <MonitorSmartphone />
                 </div>
                 <p className='text-secondaryDarkdark:text-secondaryLight text-sm leading-8'>
