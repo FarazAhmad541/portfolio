@@ -9,6 +9,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Faraz Ahmad',
   description: 'Made by Faraz Ahmad',
+  icons: {
+    icon: './favicon.svg',
+  },
 }
 
 export default function RootLayout({
