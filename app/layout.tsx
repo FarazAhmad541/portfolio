@@ -2,6 +2,7 @@ import Footer from '@/components/Footer'
 
 import NextThemeProvider from '@/lib/themeProvider'
 import { inter } from '@/lib/utils'
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -23,6 +24,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          <Analytics />
         </NextThemeProvider>
       </body>
     </html>
