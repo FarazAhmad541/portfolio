@@ -92,7 +92,7 @@ export default function Home({ blogPosts }: HomeProps) {
           </p>
           <Link
             href='/blogs'
-            className='flex items-center gap-2 text-secondaryLight hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'
+            className='flex items-center gap-2 text-secondaryDark dark:text-secondaryLight hover:text-dark dark:hover:text-light hover:transform hover:scale-105 cursor-pointer transition-transform'
           >
             <p className='text-sm'>See All</p>
             <MoveRight className='w-5 h-5' />
